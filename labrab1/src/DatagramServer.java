@@ -5,7 +5,7 @@ import java.net.SocketException;
 import java.nio.ByteBuffer;
 
 public class DatagramServer {
-    public int port = 0;
+    public int port;
 
     public DatagramServer(int port) { this.port = port; }
     public void startServer() {

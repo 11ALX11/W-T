@@ -6,7 +6,7 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class LabPart1 {
-    public static void executeLP(String host, int port) {
+    public static void sendAndReceiveFromServer(String host, int port) {
         try {
             // create socket using host and port
             var socket = new Socket();
@@ -22,7 +22,10 @@ public class LabPart1 {
             var out_stream = new DataOutputStream(socket.getOutputStream());
             var in_stream = new DataInputStream(socket.getInputStream());
 
-            out_stream.writeUTF("Bad request");
+            String request = "HEAD / HTTP/2.0\r\n" +
+                    "Host: " + host + "\r\n" +
+                    "Connection: close\r\n\r\n";
+            out_stream.write(request.getBytes());
             System.out.println(new String(in_stream.readAllBytes(), StandardCharsets.UTF_8));
 
             in_stream.close();

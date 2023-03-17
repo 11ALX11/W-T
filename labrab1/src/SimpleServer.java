@@ -3,6 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -48,7 +49,6 @@ public class SimpleServer implements Runnable {
                 client_sockets.get(i).close();
                 threads.get(i).interrupt();
             }
-            server_socket.close();
         }
         catch (IOException e) {
             System.err.println(e.getMessage());
@@ -70,7 +70,13 @@ public class SimpleServer implements Runnable {
             Date date = new Date();
             String server_response = "";
 
-            String client_request = in_stream.readUTF();
+            byte[] bytes = new byte[2048];
+            in_stream.read(bytes);
+            String client_request = new String(bytes, StandardCharsets.UTF_8)
+                    .replace("\0", "")
+                    .replace("\n", "")
+                    .replace("\r", "");
+
             System.out.println("Client request: " + client_request);
             long timer = System.nanoTime();
 
@@ -80,50 +86,56 @@ public class SimpleServer implements Runnable {
                 if (parent.getState() == 0 && client_request.equalsIgnoreCase(";pause")) {
                     parent.setState(1);
 
-                    server_response = "Server is paused.";
+                    server_response = "Server is paused.\n";
                     logData(server_response);
                 }
                 else if (client_request.equalsIgnoreCase(";unpause")) {
                     if (parent.getState() == 1) {
                         parent.setState(0);
 
-                        server_response = "Server is unpaused now.";
+                        server_response = "Server is unpaused now.\n";
                         logData(server_response);
                     }
                     else {
-                        server_response = "Server isn't paused.";
+                        server_response = "Server isn't paused.\n";
                         logData(server_response);
                     }
                 }
                 else if (parent.getState() == 0 && client_request.equalsIgnoreCase(";time")) {
                     server_response = date.toString();
-                    logData("Called \';time\': " + server_response + ".");
+                    logData("Called ';time': " + server_response + ".");
+                    server_response += "\n";
                 }
                 else if (parent.getState() == 0 && client_request.startsWith(";")) {
-                    server_response = "Wrong command!";
+                    server_response = "Wrong command!\n";
                 }
                 else if (parent.getState() == 0) {
-                    server_response = client_request + "_SERVER";//scanner.nextLine();
+                    server_response = client_request + "_SERVER\n";//scanner.nextLine();
                 }
                 else if (parent.getState() == 1) {
                     server_response = "";
                 }
 
                 out_stream.writeUTF(server_response);
-                logData("Request completed in " + Long.toString(System.nanoTime() - timer) + "ns");
+                logData("Request completed in " + (System.nanoTime() - timer) + "ns");
 
-                client_request = in_stream.readUTF();
+//                client_request = in_stream.readUTF();
+                in_stream.read(bytes);
+                client_request = new String(bytes, StandardCharsets.UTF_8)
+                        .replace("\0", "")
+                        .replace("\n", "")
+                        .replace("\r", "");
                 System.out.println("Client request: " + client_request);
 
                 timer = System.nanoTime();
             }
 
             if (client_request.equalsIgnoreCase(";stop")) {
-                logData("Called \';stop\'.");
+                logData("Called ';stop'.");
                 parent.stopServer();
             }
             if (client_request.equalsIgnoreCase(";close")) {
-                logData("Called \';close\'.");
+                logData("Called ';close'.");
             }
 
             out_stream.close();
@@ -143,7 +155,7 @@ public class SimpleServer implements Runnable {
         finally {
             try {
                 client_socket.close();
-                logData(client_socket.toString() + " connection end.");
+                logData(client_socket + " connection end.");
             }
             catch (IOException e) {
                 System.err.println(e.getMessage());
@@ -160,7 +172,7 @@ public class SimpleServer implements Runnable {
 
     public void setState(int new_state) {
         this.state = new_state;
-        logData("State set to " + Integer.toString(new_state));
+        logData("State set to " + new_state);
     }
     public int getState() { return this.state; }
 

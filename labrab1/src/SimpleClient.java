@@ -40,7 +40,7 @@ public class SimpleClient {
                 String request = scanner.nextLine();
                 out_stream.writeUTF(request);
                 String response = in_stream.readUTF();
-                System.out.println(date.toString() + ": Response from server: " + response);
+                System.out.println(date + ": Response from server: " + response);
             }
 
             in_stream.close();
