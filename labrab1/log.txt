@@ -1,0 +1,22 @@
+Fri Mar 17 13:16:57 MSK 2023: Server started on 6544 port.
+Fri Mar 17 13:17:04 MSK 2023: Socket[addr=/127.0.0.1,port=45400,localport=6544] connection.
+Fri Mar 17 13:17:04 MSK 2023: Request completed in 653964ns
+Fri Mar 17 13:17:06 MSK 2023: Socket[addr=/127.0.0.1,port=45410,localport=6544] connection.
+Fri Mar 17 13:17:06 MSK 2023: Request completed in 47125ns
+Fri Mar 17 13:17:09 MSK 2023: Called ';time': Fri Mar 17 13:17:06 MSK 2023.
+Fri Mar 17 13:17:09 MSK 2023: Request completed in 858290ns
+Fri Mar 17 13:17:16 MSK 2023: Request completed in 195206ns
+Fri Mar 17 13:17:24 MSK 2023: Called ';close'.
+Fri Mar 17 13:17:24 MSK 2023: Socket[addr=/127.0.0.1,port=45410,localport=6544] connection end.
+Fri Mar 17 13:17:30 MSK 2023: State set to 1
+Fri Mar 17 13:17:30 MSK 2023: Server is paused.
+Fri Mar 17 13:17:30 MSK 2023: Request completed in 822516ns
+Fri Mar 17 13:17:31 MSK 2023: Request completed in 149346ns
+Fri Mar 17 13:17:40 MSK 2023: Request completed in 137944ns
+Fri Mar 17 13:17:46 MSK 2023: State set to 0
+Fri Mar 17 13:17:46 MSK 2023: Server is unpaused now.
+Fri Mar 17 13:17:46 MSK 2023: Request completed in 618061ns
+Fri Mar 17 13:17:49 MSK 2023: Request completed in 114518ns
+Fri Mar 17 13:17:52 MSK 2023: Called ';stop'.
+Fri Mar 17 13:17:52 MSK 2023: Socket[addr=/127.0.0.1,port=45400,localport=6544] connection end.
+Fri Mar 17 13:17:52 MSK 2023: Server stop.
