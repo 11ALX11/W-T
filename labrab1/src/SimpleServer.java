@@ -86,15 +86,17 @@ public class SimpleServer implements Runnable {
                 if (parent.getState() == 0 && client_request.equalsIgnoreCase(";pause")) {
                     parent.setState(1);
 
-                    server_response = "Server is paused.\n";
+                    server_response = "Server is paused.";
                     logData(server_response);
+                    server_response += "\n";
                 }
                 else if (client_request.equalsIgnoreCase(";unpause")) {
                     if (parent.getState() == 1) {
                         parent.setState(0);
 
-                        server_response = "Server is unpaused now.\n";
+                        server_response = "Server is unpaused now.";
                         logData(server_response);
+                        server_response += "\n";
                     }
                     else {
                         server_response = "Server isn't paused.\n";
@@ -117,9 +119,10 @@ public class SimpleServer implements Runnable {
                 }
 
                 out_stream.writeUTF(server_response);
-                logData("Request completed in " + (System.nanoTime() - timer) + "ns");
+                if (parent.getState() != 1) logData("Request completed in " + (System.nanoTime() - timer) + "ns");
 
 //                client_request = in_stream.readUTF();
+                bytes = new byte[2048];
                 in_stream.read(bytes);
                 client_request = new String(bytes, StandardCharsets.UTF_8)
                         .replace("\0", "")
