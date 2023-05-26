@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="start_http_server" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="MainServer" />
+  <configuration default="false" name="simple_web_server" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="SimpleWebServer" />
     <module name="labrab2" />
     <method v="2">
       <option name="Make" enabled="true" />
