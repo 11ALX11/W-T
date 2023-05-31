@@ -13,7 +13,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String imagePath = "путь_к_файлу_изображения.jpg";
+        String imagePath = "test.jpg";
         File imageFile = new File(imagePath);
         if (imageFile.exists()) {
             String contentType = Files.probeContentType(imageFile.toPath());
