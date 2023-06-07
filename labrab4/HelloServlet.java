@@ -8,6 +8,8 @@ import java.util.Enumeration;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
+import java.net.URLEncoder;
+import java.net.URLDecoder;
 
 public class HelloServlet extends HttpServlet {
 
@@ -25,7 +27,7 @@ public class HelloServlet extends HttpServlet {
 
         if (uniqueVisitorCookie != null) {
             // Кука уже существует, пользователь не уникальный
-            String lastVisitDate = uniqueVisitorCookie.getValue();
+			String lastVisitDate = URLDecoder.decode(uniqueVisitorCookie.getValue(), "UTF-8");
             String userAgent = request.getHeader("User-Agent");
 
             out.println("<html><body>");
@@ -49,43 +51,53 @@ public class HelloServlet extends HttpServlet {
 				writeToFile(logEntry);
 			}
 			catch (IOException e) {
-				out.println("<p>Ошибка логирования</p>");
+				out.println("<p>Ошибка логирования: " + e.getMessage() + "</p>");
 			}
-            // Создание куки
-            Cookie newCookie = new Cookie("uniqueVisitor", currentDate);
-            newCookie.setMaxAge(24 * 60 * 60); // Установка срока жизни куки на 24 часа
-            response.addCookie(newCookie);
+            try {
+				// Создание куки
+				String encodedValue = URLEncoder.encode(currentDate, "UTF-8");
+				Cookie newCookie = new Cookie("uniqueVisitor", encodedValue);
+				newCookie.setMaxAge(24 * 60 * 60); // Установка срока жизни куки на 24 часа
+				response.addCookie(newCookie);
+			}
+			catch (Exception e) {
+				out.println("<p>Ошибка создания куки: " + e.getMessage() + "</p>");
+			}
         }
 
-            // Вывод атрибутов ServletContext, HttpSession и HttpServletRequest
-            out.println("<h2>Атрибуты:</h2>");
-
-            // Получение атрибутов ServletContext
-            ServletContext servletContext = getServletContext();
-            Enumeration<String> servletContextAttributes = servletContext.getAttributeNames();
-            while (servletContextAttributes.hasMoreElements()) {
-                String attributeName = servletContextAttributes.nextElement();
-                Object attributeValue = servletContext.getAttribute(attributeName);
-                out.println("ServletContext attribute: " + attributeName + " = " + attributeValue + "<br>");
-            }
-
-            // Получение атрибутов HttpSession
-            HttpSession session = request.getSession();
-            Enumeration<String> sessionAttributes = session.getAttributeNames();
-            while (sessionAttributes.hasMoreElements()) {
-                String attributeName = sessionAttributes.nextElement();
-                Object attributeValue = session.getAttribute(attributeName);
-                out.println("HttpSession attribute: " + attributeName + " = " + attributeValue + "<br>");
-            }
-
-            // Получение атрибутов HttpServletRequest
-            Enumeration<String> requestAttributes = request.getAttributeNames();
-            while (requestAttributes.hasMoreElements()) {
-                String attributeName = requestAttributes.nextElement();
-                Object attributeValue = request.getAttribute(attributeName);
-                out.println("HttpServletRequest attribute: " + attributeName + " = " + attributeValue + "<br>");
-            }
-
+        // Вывод атрибутов ServletContext, HttpSession и HttpServletRequest
+        out.println("<h2>Атрибуты:</h2>");
+		
+		try {
+			// Получение атрибутов ServletContext
+			ServletContext servletContext = getServletContext();
+			Enumeration<String> servletContextAttributes = servletContext.getAttributeNames();
+			while (servletContextAttributes.hasMoreElements()) {
+				String attributeName = servletContextAttributes.nextElement();
+				Object attributeValue = servletContext.getAttribute(attributeName);
+				out.println("<b>ServletContext attribute</b>: " + attributeName + " = " + attributeValue + "<br><br>");
+			}
+	
+			// Получение атрибутов HttpSession
+			HttpSession session = request.getSession();
+			Enumeration<String> sessionAttributes = session.getAttributeNames();
+			while (sessionAttributes.hasMoreElements()) {
+				String attributeName = sessionAttributes.nextElement();
+				Object attributeValue = session.getAttribute(attributeName);
+				out.println("<b>HttpSession attribute</b>: " + attributeName + " = " + attributeValue + "<br><br>");
+			}
+	
+			// Получение атрибутов HttpServletRequest
+			Enumeration<String> requestAttributes = request.getAttributeNames();
+			while (requestAttributes.hasMoreElements()) {
+				String attributeName = requestAttributes.nextElement();
+				Object attributeValue = request.getAttribute(attributeName);
+				out.println("<b>HttpServletRequest attribute</b>: " + attributeName + " = " + attributeValue + "<br><br>");
+			}
+		}
+		catch (Exception e) {
+			out.println("<p>Ошибка во время работы с атрибутами</p>");
+		}
 
         out.println("</body></html>");
     }
@@ -102,7 +114,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     private void writeToFile(String logEntry) throws IOException {
-        FileWriter writer = new FileWriter("/log.txt", true);
+        FileWriter writer = new FileWriter("C:\\Users\\marin\\Downloads\\apache-tomcat-10.1.7-windows-x64\\apache-tomcat-10.1.7\\webapps\\ROOT\\log.txt", true);
         writer.write(logEntry + "\n");
         writer.close();
     }
