@@ -1,0 +1,154 @@
+.red {
+    color: #FF0000;
+}
+
+span.required::after {
+    content: " *";
+    color: #FF0000;
+}
+
+input,
+select {
+    padding: 5px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+input:not([type="radio"]):valid,
+select:valid {
+    outline: solid 1px green
+}
+
+p,
+h1 {
+    margin: 0;
+}
+
+
+.btn {
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #4084F5;
+    transition: background-color .2s;
+}
+
+.btn-primary:hover {
+    background-color: #185ABC;
+}
+
+
+body {
+    display: inline-flex;
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+
+    background: #EEE8F6;
+}
+
+#background-head {
+    width: 100%;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    background: #673BB7;
+    z-index: -1;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin: 160px 50px 30px 50px;
+}
+
+
+form {
+    display: flex;
+    max-width: 500px;
+    padding: 35px 20px 20px;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+
+    position: relative;
+    background: #FFF;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px -10px 40px 10px rgba(0, 0, 0, 0.25);
+}
+
+form>.form-head {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #B088FC;
+}
+
+form>h1 {
+    text-align: center;
+}
+
+form>p {
+    align-self: stretch;
+    font-size: smaller;
+}
+
+form>.input-group {
+    font-size: larger;
+    font-weight: bold;
+}
+
+form>.input-group>input,
+form>.input-group>select {
+    display: block;
+    width: 260px;
+}
+
+form .radio-group {
+    font-size: medium;
+    font-weight: normal;
+    padding: 10px 0;
+}
+
+form .radio-group>label {
+    display: block;
+    width: max-content;
+}
+
+form .radio-group input {
+    margin-right: 10px;
+}
+
+.under-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.under-form>p,
+.under-form>a {
+    color: #A9A7AF;
+    text-align: center;
+}
+
+.under-form>a {
+    font-size: larger;
+    font-weight: bold;
+}
