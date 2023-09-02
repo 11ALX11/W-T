@@ -19,7 +19,7 @@
             <label class="input-group">
                 Введите номер зачетной книжки<span class="required"></span>
                 <input type="text" inputmode="numeric" placeholder="210000" minlength="6" maxlength="6"
-                    name="student-id" required autofocus>
+                    name="student-id" pattern="[0-9]*" required autofocus autocomplete="off">
             </label>
 
             <label class="input-group">
@@ -63,7 +63,10 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary" type="submit">Отправить</button>
+            <div class="btn-group btn-form-group">
+                <button class="btn btn-secondary" type="reset">Очистить</button>
+                <button class="btn btn-primary" type="submit">Отправить</button>
+            </div>
         </form>
 
         <div class="under-form">

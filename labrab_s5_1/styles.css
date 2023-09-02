@@ -13,6 +13,11 @@ select {
     margin: 8px 0;
     border: 1px solid black;
     border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin: 0;
 }
 
 input:not([type="radio"]):valid,
@@ -27,14 +32,13 @@ h1 {
 
 
 .btn {
-    width: 120px;
-    height: 40px;
+    padding: 12px 14px;
     border: none;
     border-radius: 4px;
     
     color: white;
-    font-weight: bolder;
     cursor: pointer;
+    font-weight: bolder;
 }
 
 .btn-primary {
@@ -46,6 +50,28 @@ h1 {
     background-color: #185ABC;
 }
 
+.btn-secondary {
+    background: white;
+    color: #4084F5;
+    border: 1px solid #DADCE0;
+    transition: border-color 0.2s, text-color 0.2s, background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    border-color: #1A73E8;
+    color: #185ABC;
+    background-color: #E8F1FD;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.btn-form-group {
+    justify-content: end;
+}
 
 body {
     display: inline-flex;
@@ -72,6 +98,19 @@ main {
     align-items: center;
     gap: 50px;
     margin: 160px 50px 30px 50px;
+}
+
+@media (max-width: 560px) {
+    main {
+        margin: 160px 0 30px;
+        width: 440px;
+    }
+}
+
+@media (max-width: 440px) {
+    main {
+        width: 100%;
+    }
 }
 
 
@@ -111,12 +150,13 @@ form>p {
 form>.input-group {
     font-size: larger;
     font-weight: bold;
+    width: 100%;
 }
 
 form>.input-group>input,
 form>.input-group>select {
     display: block;
-    width: 260px;
+    width: 100%;
 }
 
 form .radio-group {
@@ -126,8 +166,10 @@ form .radio-group {
 }
 
 form .radio-group>label {
-    display: block;
+    display: flex;
     width: max-content;
+    align-items: center;
+    margin: 8px 0;
 }
 
 form .radio-group input {
