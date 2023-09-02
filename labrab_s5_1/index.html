@@ -42,7 +42,7 @@
                 </select>
             </label>
 
-            <label class="input-group">
+            <label id="table-id-input-group1" class="input-group">
                 Выберите номер столика в столовой<span class="required"></span>
                 <select name="table-id" required>
                     <option></option>
@@ -55,13 +55,17 @@
                 </select>
             </label>
 
-            <div class="input-group">
-                Нужны ли вам салфетки на столе?
-                <div class="radio-group">
-                    <label><input type="radio" name="napkins" value="0" checked>Нет</label>
-                    <label><input type="radio" name="napkins" value="1">Да</label>
+            <div id="hideable1" class="hideable hide">
+                <a href="#table-id-input-group1" class="hideable-toggler">Скрыть</a>
+                <div class="input-group">
+                    Нужны ли вам салфетки на столе?
+                    <div class="radio-group">
+                        <label><input type="radio" name="napkins" value="0" checked>Нет</label>
+                        <label><input type="radio" name="napkins" value="1">Да</label>
+                    </div>
                 </div>
             </div>
+            <a href="#hideable1" class="hideable-toggler">Дополнительные опции</a>
 
             <div class="btn-group btn-form-group">
                 <button class="btn btn-secondary" type="reset">Очистить</button>

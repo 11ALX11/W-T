@@ -31,11 +31,12 @@ h1 {
 }
 
 
+
 .btn {
     padding: 12px 14px;
     border: none;
     border-radius: 4px;
-    
+
     color: white;
     cursor: pointer;
     font-weight: bolder;
@@ -72,6 +73,29 @@ h1 {
 .btn-form-group {
     justify-content: end;
 }
+
+
+
+.hideable-toggler {
+    color: black;
+    text-decoration-style: dotted;
+}
+
+.hideable>div {
+    margin-top: 20px;
+}
+
+.hideable.hide,
+.hideable.hide:target~.hideable-toggler {
+    display: none;
+}
+
+.hideable.hide:target,
+.hideable.hide+.hideable-toggler {
+    display: block;
+}
+
+
 
 body {
     display: inline-flex;
@@ -114,6 +138,7 @@ main {
 }
 
 
+
 form {
     display: flex;
     max-width: 500px;
@@ -147,14 +172,14 @@ form>p {
     font-size: smaller;
 }
 
-form>.input-group {
+form .input-group {
     font-size: larger;
     font-weight: bold;
     width: 100%;
 }
 
-form>.input-group>input,
-form>.input-group>select {
+form .input-group>input,
+form .input-group>select {
     display: block;
     width: 100%;
 }
@@ -175,6 +200,8 @@ form .radio-group>label {
 form .radio-group input {
     margin-right: 10px;
 }
+
+
 
 .under-form {
     display: flex;
