@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
 .red {
     color: #FF0000;
 }
@@ -9,6 +11,7 @@ span.required::after {
 
 input,
 select {
+    background-color: white;
     padding: 5px;
     margin: 8px 0;
     border: 1px solid black;
@@ -22,7 +25,8 @@ input[type="radio"] {
 
 input:not([type="radio"]):valid,
 select:valid {
-    outline: solid 1px green
+    outline: solid 1px green;
+    border-color: green;
 }
 
 p,
@@ -98,11 +102,14 @@ h1 {
 
 
 body {
-    display: inline-flex;
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
     width: 100%;
+    min-height: 100vh;
     margin: 0;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
 
     background: #EEE8F6;
 }
@@ -119,6 +126,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 50px;
     margin: 160px 50px 30px 50px;
@@ -152,6 +160,12 @@ form {
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0px -10px 40px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 440px) {
+    form {
+        border-radius: 0px;
+    }
 }
 
 form>.form-head {
