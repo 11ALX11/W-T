@@ -28,6 +28,11 @@ select:valid {
     outline: solid 1px green;
     border-color: green;
 }
+input:not([type="radio"]):user-invalid,
+select:user-invalid {
+    outline: solid 1px #FF0000;
+    border-color: #FF0000;
+}
 
 p,
 h1 {
