@@ -10,7 +10,8 @@ span.required::after {
 }
 
 input,
-select {
+select,
+textarea {
     background-color: white;
     padding: 5px;
     margin: 8px 0;
@@ -24,12 +25,14 @@ input[type="radio"] {
 }
 
 input:not([type="radio"]):valid,
-select:valid {
+select:valid,
+textarea:valid {
     outline: solid 1px green;
     border-color: green;
 }
 input:not([type="radio"]):user-invalid,
-select:user-invalid {
+select:user-invalid,
+textarea:user-invalid {
     outline: solid 1px #FF0000;
     border-color: #FF0000;
 }
@@ -76,6 +79,7 @@ h1 {
 .btn-group {
     width: 100%;
     display: flex;
+    align-items: center;
     gap: 12px;
 }
 
@@ -198,9 +202,14 @@ form .input-group {
 }
 
 form .input-group>input,
-form .input-group>select {
+form .input-group>select,
+form .input-group>textarea {
     display: block;
     width: 100%;
+}
+
+form .input-group>textarea {
+    resize: vertical;
 }
 
 form .radio-group {
@@ -220,6 +229,9 @@ form .radio-group input {
     margin-right: 10px;
 }
 
+form>.hideable {
+    width: 100%;
+}
 
 
 .under-form {

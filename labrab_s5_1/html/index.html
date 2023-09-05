@@ -57,6 +57,7 @@
 
             <div id="hideable1" class="hideable hide">
                 <a href="#table-id-input-group1" class="hideable-toggler">Скрыть</a>
+
                 <div class="input-group">
                     Нужны ли вам салфетки на столе?
                     <div class="radio-group">
@@ -64,6 +65,17 @@
                         <label><input type="radio" name="napkins" value="1">Да</label>
                     </div>
                 </div>
+
+                <label class="input-group">
+                    Сообщение на столе
+                    <textarea placeholder="Текст..." name="table-message" autocomplete="off"></textarea>
+                </label>
+
+                <label class="input-group">
+                    Просто числа от 0 до 10
+                    <input type="number" name="numbers" min="0" max="10" value="0">
+                </label>
+
             </div>
             <a href="#hideable1" class="hideable-toggler">Дополнительные опции</a>
 
