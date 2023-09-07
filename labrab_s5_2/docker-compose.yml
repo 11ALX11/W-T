@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    nodejs:
+        build:
+            context: ./node
+            dockerfile: ./Dockerfile
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        command: /bin/sh
+        volumes:
+            -   ./node:/node:delegated
