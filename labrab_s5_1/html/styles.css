@@ -215,7 +215,7 @@ form .input-group>textarea {
 form .radio-group {
     font-size: medium;
     font-weight: normal;
-    padding: 10px 0;
+    margin-top: 8px;
 }
 
 form .radio-group>label {
@@ -231,6 +231,11 @@ form .radio-group input {
 
 form>.hideable {
     width: 100%;
+}
+
+form>.hideable .input-group {
+    margin-top: 20px;
+    display: block;
 }
 
 
