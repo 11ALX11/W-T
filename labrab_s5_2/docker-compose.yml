@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-    nodejs:
-        build:
-            context: ./node
-            dockerfile: ./Dockerfile
-        stdin_open: true # docker run -i
-        tty: true        # docker run -t
-        command: /bin/sh
+    apache:
+        image: httpd:2.4
+        #stdin_open: true # docker run -i
+        #tty: true        # docker run -t
+        #command: /bin/sh
+        ports:
+            -   80:80
         volumes:
-            -   ./node:/node:delegated
+            -   ./html:/usr/local/apache2/htdocs

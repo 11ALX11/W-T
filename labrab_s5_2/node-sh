@@ -1,3 +1,0 @@
-#! /bin/sh
-
-docker exec -it labrab_s5_2-nodejs-1 /bin/sh

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>W-T_labrab_s5_2</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+    <link rel="stylesheet" href="https://cdn.webix.com/8.4/webix.css" type="text/css">
+    <script src="https://cdn.webix.com/8.4/webix.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <script>
+        webix.ready(function () {
+            webix.ui({
+            rows: [
+                { 
+                    id: "background-head",
+                    view: "template",
+                    template: "<div class='background-head'></div>"
+                },
+                {
+                    cols: [
+                        {
+                            view: "form",
+                            id: "myForm",
+                            elements: [
+                                { view: "template", template: "<div class='form-head'></div>" },
+                                { view: "template", type: "section", template: "Форма резервации места в студенческой столовой" },
+                                { view: "text", label: "Введите номер зачетной книжки<span class='required'></span>", name: "student-id", inputmode: "numeric", placeholder: "210000", minlength: 6, maxlength: 6, pattern: "[0-9]*", required: true, autofocus: true, autocomplete: "off" },
+                                { view: "datepicker", label: "Выберите дату посещения<span class='required'></span>", name: "date", required: true },
+                                { view: "select", label: "Выберите время посещения<span class='required'></span>", name: "time", required: true, options: ["", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"] },
+                                { view: "select", label: "Выберите номер столика в столовой<span class='required'></span>", name: "table-id", required: true, options: ["", "№1 (4 человека)", "№2 (4 человека)", "№3 (3 человека)", "№4 (2 человека)", "№5 (2 человека)", "№6 (1 человек)"] },
+                                {
+                                    rows: [
+                                        { view: "toggle", label: "Дополнительные опции", on: { onChange: function (newState) { $$("hideable1").toggle(); }} },
+                                        {
+                                            id: "hideable1",
+                                            rows: [
+                                                { view: "radio", label: "Нужны ли вам салфетки на столе?", labelPosition: "top", options: [{ id: 0, value: "Нет" }, { id: 1, value: "Да" }] },
+                                                { view: "textarea", label: "Сообщение на столе", name: "table-message", placeholder: "Текст...", autocomplete: "off" },
+                                                { view: "counter", label: "Просто числа от 0 до 10", name: "numbers", min: 0, max: 10, value: 0 }
+                                            ],
+                                            hidden: true
+                                        }
+                                    ]
+                                },
+                                {
+                                    cols: [
+                                        { view: "button", type: "reset", label: "Очистить" },
+                                        { view: "button", type: "submit", label: "Отправить" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            view: "template",
+                            template: `
+                                <div class="under-form">
+                                    <p>Веб-технологии лабораторная №1 вариант №15</p>
+                                    <a href="https://github.com/11ALX11/W-T">https://github.com/11ALX11/W-T</a>
+                                </div>
+                            `
+                        }
+                    ]
+                }
+            ]
+        });
+        });
+    </script>
+</body>
+
+</html>

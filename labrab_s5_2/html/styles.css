@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+.red {
+    color: #FF0000;
+}
+
+span.required::after {
+    content: " *";
+    color: #FF0000;
+}
+
+input,
+select,
+textarea {
+    background-color: white;
+    padding: 5px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin: 0;
+}
+
+input:not([type="radio"]):valid,
+select:valid,
+textarea:valid {
+    outline: solid 1px green;
+    border-color: green;
+}
+input:not([type="radio"]):user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+    outline: solid 1px #FF0000;
+    border-color: #FF0000;
+}
+
+p,
+h1 {
+    margin: 0;
+}
+
+
+
+.btn {
+    padding: 12px 14px;
+    border: none;
+    border-radius: 4px;
+
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.btn-primary {
+    background-color: #4084F5;
+    transition: background-color .2s;
+}
+
+.btn-primary:hover {
+    background-color: #185ABC;
+}
+
+.btn-secondary {
+    background: white;
+    color: #4084F5;
+    border: 1px solid #DADCE0;
+    transition: border-color 0.2s, text-color 0.2s, background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    border-color: #1A73E8;
+    color: #185ABC;
+    background-color: #E8F1FD;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-form-group {
+    justify-content: end;
+}
+
+
+
+.hideable-toggler {
+    color: black;
+    text-decoration-style: dotted;
+}
+
+.hideable>div {
+    margin-top: 20px;
+}
+
+.hideable.hide,
+.hideable.hide:target~.hideable-toggler {
+    display: none;
+}
+
+.hideable.hide:target,
+.hideable.hide+.hideable-toggler {
+    display: block;
+}
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: stretch;
+
+    background: #EEE8F6;
+}
+
+#background-head {
+    width: 100%;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    background-color: #673BB7;
+    z-index: -1;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin: 160px 50px 30px 50px;
+}
+
+@media (max-width: 560px) {
+    main {
+        margin: 160px 0 30px;
+        width: 440px;
+    }
+}
+
+@media (max-width: 440px) {
+    main {
+        width: 100%;
+    }
+}
+
+
+
+form {
+    display: flex;
+    max-width: 500px;
+    padding: 35px 20px 20px;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+
+    position: relative;
+    background: #FFF;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px -10px 40px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 440px) {
+    form {
+        border-radius: 0px;
+    }
+}
+
+form>.form-head {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #B088FC;
+}
+
+form>h1 {
+    text-align: center;
+}
+
+form>p {
+    align-self: stretch;
+    font-size: smaller;
+}
+
+form .input-group {
+    font-size: larger;
+    font-weight: bold;
+    width: 100%;
+}
+
+form .input-group>input,
+form .input-group>select,
+form .input-group>textarea {
+    display: block;
+    width: 100%;
+}
+
+form .input-group>textarea {
+    resize: vertical;
+}
+
+form .radio-group {
+    font-size: medium;
+    font-weight: normal;
+    margin-top: 8px;
+}
+
+form .radio-group>label {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    margin: 8px 0;
+}
+
+form .radio-group input {
+    margin-right: 10px;
+}
+
+form>.hideable {
+    width: 100%;
+}
+
+form>.hideable .input-group {
+    margin-top: 20px;
+    display: block;
+}
+
+
+.under-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.under-form>p,
+.under-form>a {
+    color: #A9A7AF;
+    text-align: center;
+}
+
+.under-form>a {
+    font-size: larger;
+    font-weight: bold;
+}
