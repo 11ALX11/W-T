@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sum Function</title>
+</head>
+<body>
+
+<script>
+  function sum(initialValue) {
+    let currentSum = initialValue || 0;
+
+    function innerAdd(nextValue) {
+      if (nextValue === undefined) {
+        return currentSum;
+      }
+
+      currentSum += nextValue;
+      return innerAdd;
+    }
+
+    return innerAdd;
+  }
+
+  // Пример
+  result = sum(3)(1)(1)();
+  console.log(result); // Выведет 5
+
+  result = sum(1)(2)(3)(4)(5)();
+  console.log(result);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    apache:
+        image: httpd:2.4
+        #stdin_open: true # docker run -i
+        #tty: true        # docker run -t
+        #command: /bin/sh
+        ports:
+            -   80:80
+        volumes:
+            -   ./html:/usr/local/apache2/htdocs
