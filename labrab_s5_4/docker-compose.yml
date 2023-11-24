@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    #command: sh -c "npm start"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    command: /bin/sh
+    ports:
+      - 4200:4200
+    working_dir: /app
+    volumes:
+      - ./app:/app
+

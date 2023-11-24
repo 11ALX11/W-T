@@ -1,0 +1,3 @@
+#! /bin/sh
+
+docker exec -it labrab_s5_4-app-1 /bin/bash
