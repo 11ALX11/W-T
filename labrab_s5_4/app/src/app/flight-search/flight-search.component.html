@@ -1,0 +1,31 @@
+<div class="centerer">
+  <h1>Поиск дешевых авиабилетов</h1>
+  <p>Лучший способ купить авиабилеты дешево</p>
+
+  <form>
+    <mat-form-field>
+      <mat-label>Откуда</mat-label>
+      <input matInput placeholder="Город отправления" [(ngModel)]="departureCity" name="departureCity">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Куда</mat-label>
+      <input matInput placeholder="Город назначения" [(ngModel)]="destinationCity" name="destinationCity">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Когда</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Выберите дату" [(ngModel)]="date" name="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Количество пассажиров</mat-label>
+      <input matInput type="number" placeholder="Количество пассажиров" [(ngModel)]="passengerCount"
+        name="passengerCount">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="search()">Найти билеты</button>
+  </form>
+</div>
